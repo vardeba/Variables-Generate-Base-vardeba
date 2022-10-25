@@ -18,3 +18,27 @@ const colors = [
 colors.forEach((style, index) => {
   inputsColor[index].value = style;
 });
+
+const criaCSS = () => {
+  const form = document.querySelector('form');
+
+  const elements = [...form];
+
+  form.addEventListener('submit' , (e) => {
+    e.preventDefault();
+    const root = {};
+  
+    elements.forEach((elem) => {
+      if (elem.tagName == "INPUT"){
+        root[`--color-${elem.id}`] = elem.value;
+      };
+    });
+    console.log(root);
+
+    return root;
+  
+  })
+
+};
+
+criaCSS();
